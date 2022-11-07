@@ -54,7 +54,7 @@ wp_enqueue_style(
 
 wp_enqueue_style(
     'acrw-admin-global',
-    plugin_dir_url( __FILE__ ) . '../css/acrw-global-admin.css',
+    plugin_dir_url( __FILE__ ) . '../css/acrw-admin.css',
     array(),
     '1.21'
 ); 
@@ -70,18 +70,9 @@ wp_enqueue_script(
     'acrw-admin',
     plugin_dir_url( __FILE__ ) . '../js/acrw-admin.js',
     array( 'jquery' ),
-    "1.2111",
+    "1.211111",
     false
-);
-?>
-<script>
-jQuery(document).on("select2:open", () => {
-    document
-        .querySelector(".select2-container--open .select2-search__field")
-        .focus();
-});
-</script>
-<?php
+); 
     }
  
 public static function update_settings() {
@@ -91,12 +82,28 @@ public static function update_settings() {
 
 public static function get_settings() {
 
-    $main_data = get_posts();
-    $options['default_global'] = __( 'Select a value', "acrw"); 
+            $options = array();
+			$options['default'] = __( 'Select a value', "acrw");  
 
-    foreach ($main_data as  $item){
-        $options[get_permalink( $item->ID )] = $item->post_title;
-    }
+            $post_string = __( 'post', 'acrw');
+            $page_string = __( 'page', 'acrw');
+            
+			$main_data_posts = get_posts();
+			foreach ($main_data_posts as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+			}
+
+			$main_data_pages = get_pages();
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+			}
+?>
+<style>
+.forminp.forminp-select {
+    background: white !important;
+}
+</style>
+<?php
 
 
     $settings = array(

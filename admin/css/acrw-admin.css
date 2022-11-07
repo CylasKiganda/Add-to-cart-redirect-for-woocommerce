@@ -91,8 +91,17 @@ label[for="add_to_cart_variation_parent_redirect"] {
   top: 50%;
   position: absolute;
   width: 0;
+  display: block !important;
 }
 .select2-container--belo-acrw .select2-results > .select2-results__options {
   max-height: 200px;
   overflow-y: auto;
+}
+
+.select2-results__options .undefined {
+  display: none !important;
+}
+
+label[for="add_to_cart_variation_parent_redirect"] {
+  width: 120px !important;
 }

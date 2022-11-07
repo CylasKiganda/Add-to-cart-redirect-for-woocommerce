@@ -32,15 +32,19 @@
     jQuery("#wc_settings_add_to_cart_redirect_acrw_title").select2({
       allowClear: true,
       placeholder: "",
+      templateResult: formatState,
+      theme: "belo-acrw",
     });
+
     function formatState(state) {
       if (!state.id) {
         return state.text;
       }
 
       var text = state.text.split(",");
+
       var $state = jQuery(
-        `<span>${text[0]}</span><span style="color:#9e9e9e; float:right">${text[1]}</span>`
+        `<span>${text[0]}</span><span class="${text[1]}" style="color:#9e9e9e; float:right">${text[1]}</span>`
       );
 
       return $state;
@@ -51,37 +55,63 @@
       templateResult: formatState,
       theme: "belo-acrw",
     });
-    $("#select2-add_to_cart_simple_redirect-container").text(
-      $("#select2-add_to_cart_simple_redirect-container")
-        .text()
-        .replace(
-          $("#select2-add_to_cart_simple_redirect-container span").text(),
-          ""
-        )
-        .split(",")[0]
-    );
-    $("#select2-add_to_cart_simple_redirect-container").on(
-      "DOMSubtreeModified",
-      function () {
-        $(this).text(
-          $(this)
+    $(document).ready(function () {
+      if (
+        $("#add_to_cart_variation_parent_redirect").length &&
+        $("#add_to_cart_variation_parent_redirect")
+          .closest(".show_if_variable")
+          .attr("style") !== "display: none;"
+      ) {
+        var rendered_iput = $(
+          ".add_to_cart_variation_parent_redirect_field .select2-container--belo-acrw .select2-selection__rendered"
+        );
+      } else {
+        var rendered_iput = $(
+          ".select2-container--belo-acrw .select2-selection__rendered"
+        );
+      }
+
+      if (rendered_iput.text().indexOf(",") !== -1) {
+        rendered_iput.text(
+          rendered_iput
             .text()
             .replace(
-              $("#select2-add_to_cart_simple_redirect-container span").text(),
+              $(
+                ".select2-container--belo-acrw .select2-selection__rendered span"
+              ).text(),
               ""
             )
             .split(",")[0]
         );
       }
-    );
+      rendered_iput.on("DOMSubtreeModified", function () {
+        if (rendered_iput.text().indexOf(",") !== -1) {
+          rendered_iput.text(
+            rendered_iput
+              .text()
+              .replace(
+                $(
+                  ".select2-container--belo-acrw .select2-selection__rendered span"
+                ).text(),
+                ""
+              )
+              .split(",")[0]
+          );
+        }
+      });
+    });
 
     $("#add_to_cart_variation_parent_redirect").select2({
       allowClear: true,
       placeholder: "",
+      templateResult: formatState,
+      theme: "belo-acrw",
     });
     $("#add_to_cart_grouped_redirect").select2({
       allowClear: true,
       placeholder: "",
+      templateResult: formatState,
+      theme: "belo-acrw",
     });
 
     $("#woocommerce-product-data").on("woocommerce_variations_loaded", () => {
@@ -101,6 +131,42 @@
               width: "400px",
               allowClear: true,
               placeholder: "",
+              templateResult: formatState,
+              theme: "belo-acrw",
+            });
+            // input cleaning
+            var rendered_iput_vars = $(this)
+              .next(".woocommerce_variable_attributes ")
+              .find(
+                ".select2-container--belo-acrw .select2-selection__rendered"
+              );
+            if (rendered_iput_vars.text().indexOf(",") !== -1) {
+              rendered_iput_vars.text(
+                rendered_iput_vars
+                  .text()
+                  .replace(
+                    $(
+                      ".select2-container--belo-acrw .select2-selection__rendered span"
+                    ).text(),
+                    ""
+                  )
+                  .split(",")[0]
+              );
+            }
+            rendered_iput_vars.on("DOMSubtreeModified", function () {
+              if (rendered_iput_vars.text().indexOf(",") !== -1) {
+                rendered_iput_vars.text(
+                  rendered_iput_vars
+                    .text()
+                    .replace(
+                      $(
+                        ".select2-container--belo-acrw .select2-selection__rendered span"
+                      ).text(),
+                      ""
+                    )
+                    .split(",")[0]
+                );
+              }
             });
           }
         );

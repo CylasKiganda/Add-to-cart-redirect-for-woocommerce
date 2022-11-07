@@ -79,7 +79,7 @@ class Acrw_Admin {
                 $this->plugin_name . 'admin',
                 plugin_dir_url( __FILE__ ) . 'css/acrw-admin.css',
                 array(),
-                '1.11111111111111111111111111111111111111111111111111111'
+                '1.111111111111111111111111111111111111111111111111111111111111'
             ); 
 
         }
@@ -112,7 +112,7 @@ class Acrw_Admin {
                 $this->plugin_name . 'admin',
                 plugin_dir_url( __FILE__ ) . 'js/acrw-admin.js',
                 array( 'jquery' ),
-                "1.1111111111111111111111111111111111111111111111111111111111111",
+                "1.11111111111111111111111111111111111111111111111111111111111111111111111111111111111",
                 false
             );
 
@@ -138,18 +138,21 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		 
-		    $options = array();
-			$options['default'] = __( 'Select a value', "acrw");  
+		$options = array();
+		$options['default'] = __( 'Select a value', "acrw");  
 
-			$main_data_posts = get_posts();
-			foreach ($main_data_posts as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.',post';
-			}
+		$post_string = __( 'post', 'acrw');
+		$page_string = __( 'page', 'acrw');
+		
+		$main_data_posts = get_posts();
+		foreach ($main_data_posts as  $item){
+			$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+		}
 
-			$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.',page';
-			}
+		$main_data_pages = get_pages();
+		foreach ($main_data_pages as  $item){
+			$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+		}
 				  
 
 			 
@@ -178,11 +181,20 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		if($product->is_type('grouped')){
-			$main_data = get_pages();
-			$options['default'] = __( 'Select a value', "acrw");   
+			$options = array();
+			$options['default'] = __( 'Select a value', "acrw");  
 
-			foreach ($main_data as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title;
+            $post_string = __( 'post', 'acrw');
+            $page_string = __( 'page', 'acrw');
+            
+			$main_data_posts = get_posts();
+			foreach ($main_data_posts as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+			}
+
+			$main_data_pages = get_pages();
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
 			}
 				  
 
@@ -214,12 +226,21 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		 //var_dump( get_pages());
-			$main_data = get_pages();
-			$options['default'] = __( 'Select a value', "acrw");  
+		 $options = array();
+		 $options['default'] = __( 'Select a value', "acrw");  
 
-			foreach ($main_data as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title;
-			}
+		 $post_string = __( 'post', 'acrw');
+		 $page_string = __( 'page', 'acrw');
+		 
+		 $main_data_posts = get_posts();
+		 foreach ($main_data_posts as  $item){
+			 $options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+		 }
+
+		 $main_data_pages = get_pages();
+		 foreach ($main_data_pages as  $item){
+			 $options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+		 }
 				  
 
 			 
@@ -269,12 +290,20 @@ class Acrw_Admin {
 		 * This function is used to add the add-to-cart url field for variation products.
 		 * 
 		 */
-		$main_data = get_pages();
-		$options['same_as_parent'] = __( 'Same as parent', "acrw");  
-		
+		$options = array();
+			$options['same_as_parent'] = __( 'Same as parent', "acrw");  
 
-			foreach ($main_data as  $item){
-				$options[get_permalink( $item->ID )] = $item->post_title;
+            $post_string = __( 'post', 'acrw');
+            $page_string = __( 'page', 'acrw');
+            
+			$main_data_posts = get_posts();
+			foreach ($main_data_posts as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+			}
+
+			$main_data_pages = get_pages();
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
 			}
 			echo '<div class=" acrw-wrapper">';
 			woocommerce_wp_select( array(
