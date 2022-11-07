@@ -1,0 +1,98 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+label[for="add_to_cart_variation_parent_redirect"] {
+  margin-right: 10px !important;
+  line-height: 1.1 !important;
+}
+#add_to_cart_variation_parent_redirect {
+  width: 460px !important;
+}
+
+.add_to_cart_grouped_redirect_field .select2-container {
+  width: 460px !important;
+}
+.acrw-wrapper
+  .select2-container.select2-container--focus
+  .select2-selection--single,
+.acrw-wrapper
+  .select2-container.select2-container--open
+  .select2-selection--multiple,
+.acrw-wrapper
+  .select2-container.select2-container--open
+  .select2-selection--single {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+.acrw-wrapper
+  .select2-container
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  display: block !important;
+}
+.acrw-wrapper
+  .select2-container
+  .select2-selection--single
+  .select2-selection__arrow {
+  background: unset !important;
+}
+.acrw-wrapper .select2-selection__clear {
+  margin-right: 4px !important;
+  font-size: 13px !important;
+}
+.select2-container--belo-acrw .select2-search__field {
+  background: url("../assets/search-icon-png-3.png") no-repeat 100% 6px,
+    linear-gradient(to bottom, #fff 85%, #eee 99%) 0 0 !important;
+  min-height: 30px !important;
+}
+.select2-container--belo-acrw .select2-dropdown--above {
+  box-shadow: none !important;
+}
+.select2-container--belo-acrw .select2-dropdown--below {
+  box-shadow: none !important;
+}
+.select2-container--belo-acrw .select2-dropdown {
+  border-color: #767676 !important;
+  border: 1px solid #aaa !important;
+  border-radius: 0px !important;
+  margin-top: 3px !important;
+}
+.select2-container--belo-acrw .select2-selection--single {
+  border: 1px solid #aaa !important;
+  border-radius: 1px !important;
+}
+.select2-container--belo-acrw .select2-search__field:focus {
+  border-color: #2271b1 !important;
+  box-shadow: 0 0 0 1px #ffffff !important;
+  outline: none !important;
+  margin: 3px 0px !important;
+}
+.select2-container--belo-acrw {
+  min-width: 50% !important;
+}
+.select2-container--belo-acrw
+  .select2-selection--single
+  .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+}
+.select2-container--belo-acrw
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  border-color: #888 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  right: 10px;
+  top: 50%;
+  position: absolute;
+  width: 0;
+}
+.select2-container--belo-acrw .select2-results > .select2-results__options {
+  max-height: 200px;
+  overflow-y: auto;
+}
