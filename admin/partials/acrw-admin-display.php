@@ -25,7 +25,7 @@ add_action( 'woocommerce_update_options_settings_add_to_cart_redirect_acrw', __C
 
 
 public static function add_settings_tab( $settings_tabs ) {
-$settings_tabs['settings_add_to_cart_redirect_acrw'] = __( 'Add To Cart Redirect', 'woocommerce-settings-tab-demo' );
+$settings_tabs['settings_add_to_cart_redirect_acrw'] = __( 'Add To Cart Redirect', 'belo-acrw' );
 return $settings_tabs;
 }
 
@@ -56,7 +56,7 @@ wp_enqueue_style(
     'acrw-admin-global',
     plugin_dir_url( __FILE__ ) . '../css/acrw-admin.css',
     array(),
-    '1.21'
+    '1.21111111111111111111'
 ); 
 wp_enqueue_script(
     'acrw--select2-js',
@@ -70,7 +70,7 @@ wp_enqueue_script(
     'acrw-admin',
     plugin_dir_url( __FILE__ ) . '../js/acrw-admin.js',
     array( 'jquery' ),
-    "1.211111",
+    "1.2111111111",
     false
 ); 
     }
@@ -87,44 +87,115 @@ public static function get_settings() {
 
             $post_string = __( 'post', 'acrw');
             $page_string = __( 'page', 'acrw');
+
+            $main_data_pages = get_pages();
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+			}
             
 			$main_data_posts = get_posts();
 			foreach ($main_data_posts as  $item){
 				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
 			}
 
-			$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-			}
+			
 ?>
 <style>
-.forminp.forminp-select {
-    background: white !important;
+#wpbody-content .notice,
+#wpbody-content .error,
+#message {
+    display: none !important;
+}
+
+.acrw_global_title {
+    color: #2a8db0;
+    font-size: 16px;
+    border: 1px solid #d8d8d8;
+    border-bottom: 0;
+    background-color: #fff;
+    padding: 35px 20px;
+    margin: 0px;
+}
+
+table.form-table {
+    border: 1px solid #d8d8d8;
+    border-top: 0;
+    margin-bottom: 40px;
+}
+
+table.form-table td,
+th {
+    padding: 30px 20px !important;
+    background-color: #fff;
+}
+
+p.submit {
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+p.submit .button-primary {
+    background: #00799f !important;
+    border-color: #00799f !important;
+}
+
+.form-wrap p,
+p.description {
+    margin-top: 10px !important;
+    line-height: 20px;
+    max-width: 40%;
+    min-width: min(100%, 360px);
+}
+
+input[type="radio"]:checked:before,
+input[type="checkbox"]:checked:before {
+    float: left;
+    display: flex;
+    background: #3dc1ab;
+    content: "\2713";
+    font-weight: bolder;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 1.4125rem;
+    width: 1.4125rem;
 }
 </style>
-<?php
 
+<h2 class="acrw_global_title">
+    <?php  echo __( 'Global Settings', 'belo-acrw' ); ?>
 
+</h2>
+<?php 
     $settings = array(
         'section_title' => array(
-            'name'     => __( 'Global Settings', 'woocommerce-settings-tab-demo' ),
+            'name'     => "",
             'type'     => 'title',
             'desc'     => '',
             'id'       => 'wc_settings_add_to_cart_redirect_acrw_section_title'
         ),
         'select_acrw_global' => array(
-            'name' => __( 'Add to cart redirect - global', 'woocommerce-settings-tab-demo' ),
+            'name' => __( 'Add to cart redirect - global', 'belo-acrw' ),
             'type' => 'select',
-            'desc' => __( 'select the global redirect', 'woocommerce-settings-tab-demo' ),
+            'desc' => __( 'select the global redirect', 'belo-acrw' ),
             'id'   => 'wc_settings_add_to_cart_redirect_acrw_title',
             'options'=> $options,
+        ), 
+        'checkbox_acrw_global' => array(
+            'name' => __( 'Enable the global redirect', 'belo-acrw' ),
+            'type' => 'checkbox',
+            'desc' => __( 'Enable the global redirect for all products', 'belo-acrw' ),
+            'id'   => 'wc_settings_add_to_cart_redirect_acrw_checkbox',
+            'default'=> 'false',
         ), 
         'section_end' => array(
              'type' => 'sectionend',
              'id' => 'wc_settings_add_to_cart_redirect_acrw_section_end'
         )
     );
+
 
     return apply_filters( 'wc_settings_add_to_cart_redirect_acrw_settings', $settings );
 }

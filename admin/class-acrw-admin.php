@@ -79,7 +79,7 @@ class Acrw_Admin {
                 $this->plugin_name . 'admin',
                 plugin_dir_url( __FILE__ ) . 'css/acrw-admin.css',
                 array(),
-                '1.111111111111111111111111111111111111111111111111111111111111'
+                '1.21111'
             ); 
 
         }
@@ -104,7 +104,7 @@ class Acrw_Admin {
                 $this->plugin_name . '-select2-js',
                 plugin_dir_url( __FILE__ ) . 'js/select2.full.min.js',
                 array( 'jquery' ),
-                $this->version,
+                "1.11",
                 false
             ); 
 
@@ -112,7 +112,7 @@ class Acrw_Admin {
                 $this->plugin_name . 'admin',
                 plugin_dir_url( __FILE__ ) . 'js/acrw-admin.js',
                 array( 'jquery' ),
-                "1.11111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+                "1.11111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
                 false
             );
 
@@ -139,20 +139,20 @@ class Acrw_Admin {
 		$product = wc_get_product($post->ID); 
 		 
 		$options = array();
-		$options['default'] = __( 'Select a value', "acrw");  
+		$options['default'] = __( 'Select a value', "belo-acrw");  
 
-		$post_string = __( 'post', 'acrw');
-		$page_string = __( 'page', 'acrw');
+		$post_string = __( 'post', "belo-acrw");
+		$page_string = __( 'page', "belo-acrw");
 		
-		$main_data_posts = get_posts();
-		foreach ($main_data_posts as  $item){
-			$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-		}
-
 		$main_data_pages = get_pages();
-		foreach ($main_data_pages as  $item){
-			$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-		}
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+			}
+            
+			$main_data_posts = get_posts();
+			foreach ($main_data_posts as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+			}
 				  
 
 			 
@@ -162,10 +162,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_simple_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
 			'name'          => 'add_to_cart_simple_redirect',
-			'label'         => __('Add to cart redirect', "acrw"), 
+			'label'         => __('Add to cart redirect', "belo-acrw"), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', $this->plugin_name ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
 			) );
 			
 			echo '</div>'; 
@@ -182,19 +182,20 @@ class Acrw_Admin {
 		$product = wc_get_product($post->ID); 
 		if($product->is_type('grouped')){
 			$options = array();
-			$options['default'] = __( 'Select a value', "acrw");  
+			$options['default'] = __( 'Select a value', "belo-acrw");  
 
-            $post_string = __( 'post', 'acrw');
-            $page_string = __( 'page', 'acrw');
+            $post_string = __( 'post', "belo-acrw");
+            $page_string = __( 'page', "belo-acrw");
+            
+			$main_data_posts = get_posts();
+			$main_data_pages = get_pages();
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+			}
             
 			$main_data_posts = get_posts();
 			foreach ($main_data_posts as  $item){
 				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
-
-			$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
 			}
 				  
 
@@ -205,10 +206,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_grouped_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
 			'name'          => 'add_to_cart_simple_redirect',
-			'label'         => __('Add to cart redirect', "acrw"), 
+			'label'         => __('Add to cart redirect', "belo-acrw"), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', $this->plugin_name ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
 			) );
 			
 			echo '</div>';
@@ -227,20 +228,20 @@ class Acrw_Admin {
 		$product = wc_get_product($post->ID); 
 		 //var_dump( get_pages());
 		 $options = array();
-		 $options['default'] = __( 'Select a value', "acrw");  
+		 $options['default'] = __( 'Select a value', "belo-acrw");  
 
-		 $post_string = __( 'post', 'acrw');
-		 $page_string = __( 'page', 'acrw');
+		 $post_string = __( 'post', "belo-acrw");
+		 $page_string = __( 'page', "belo-acrw");
 		 
-		 $main_data_posts = get_posts();
-		 foreach ($main_data_posts as  $item){
-			 $options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-		 }
-
 		 $main_data_pages = get_pages();
-		 foreach ($main_data_pages as  $item){
-			 $options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-		 }
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+			}
+            
+			$main_data_posts = get_posts();
+			foreach ($main_data_posts as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
+			}
 				  
 
 			 
@@ -250,10 +251,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_variation_parent_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_variation_parent_redirect', true ),
 			'name'          => 'add_to_cart_variation_parent_redirect',
-			'label'         => __('Add to cart redirect - parent', "acrw"), 
+			'label'         => __('Add to cart redirect - parent', "belo-acrw"), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', $this->plugin_name ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
 			) );
 			
 			echo '</div>';
@@ -291,19 +292,19 @@ class Acrw_Admin {
 		 * 
 		 */
 		$options = array();
-			$options['same_as_parent'] = __( 'Same as parent', "acrw");  
+			$options['same_as_parent'] = __( 'Same as parent', "belo-acrw");  
 
-            $post_string = __( 'post', 'acrw');
-            $page_string = __( 'page', 'acrw');
+            $post_string = __( 'post', "belo-acrw");
+            $page_string = __( 'page', "belo-acrw");
+            
+			$main_data_pages = get_pages();
+			foreach ($main_data_pages as  $item){
+				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
+			}
             
 			$main_data_posts = get_posts();
 			foreach ($main_data_posts as  $item){
 				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
-
-			$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
 			}
 			echo '<div class=" acrw-wrapper">';
 			woocommerce_wp_select( array(
@@ -311,10 +312,10 @@ class Acrw_Admin {
 				'name' => 'add_to_cart_variation_redirect['.$loop.']', 
 				'class' => 'long belo_variation_select',
 				'value'         => get_post_meta( $variation->ID, 'add_to_cart_variation_redirect', true ), 
-				'label'         => __('Add to cart redirect', "acrw"), 
+				'label'         => __('Add to cart redirect', "belo-acrw"), 
 				'options' =>  $options,  
 				'desc_tip'      => true,
-				'description'   => __( 'After this product is added to the cart, select the page to be redirected to', $this->plugin_name ),
+				'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
 				) );
 				echo '</div>';
 	}

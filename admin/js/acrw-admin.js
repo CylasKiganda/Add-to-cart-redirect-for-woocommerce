@@ -30,7 +30,6 @@
    */
   jQuery(document).ready(function ($) {
     jQuery("#wc_settings_add_to_cart_redirect_acrw_title").select2({
-      allowClear: true,
       placeholder: "",
       templateResult: formatState,
       theme: "belo-acrw",
@@ -50,7 +49,6 @@
       return $state;
     }
     $("#add_to_cart_simple_redirect").select2({
-      allowClear: true,
       placeholder: "",
       templateResult: formatState,
       theme: "belo-acrw",
@@ -102,13 +100,11 @@
     });
 
     $("#add_to_cart_variation_parent_redirect").select2({
-      allowClear: true,
       placeholder: "",
       templateResult: formatState,
       theme: "belo-acrw",
     });
     $("#add_to_cart_grouped_redirect").select2({
-      allowClear: true,
       placeholder: "",
       templateResult: formatState,
       theme: "belo-acrw",
@@ -129,7 +125,7 @@
             // select2-ify dropdown
             ddl.select2({
               width: "400px",
-              allowClear: true,
+
               placeholder: "",
               templateResult: formatState,
               theme: "belo-acrw",
@@ -172,12 +168,21 @@
         );
       });
     });
-    $(document).on("select2:open", () => {
-      document
-        .querySelector(
-          ".select2-container--belo-acrw.select2-container--open .select2-search__field"
-        )
-        .focus();
+
+    /**
+     * Select2 - focus on search field when opened and the select is not multiple.
+     * For multiple select this is already handled by select2.
+     */
+    $(document).on("select2:open", function (e) {
+      if (!e.target.multiple) {
+        setTimeout(function () {
+          document
+            .querySelector(
+              ".select2-container--belo-acrw .select2-search__field"
+            )
+            .focus();
+        }, 50);
+      }
     });
   });
 })(jQuery);
