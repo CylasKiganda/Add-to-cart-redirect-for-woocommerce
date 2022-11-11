@@ -64,15 +64,32 @@ class Acrw_Public {
 		if ( ! isset( $_REQUEST['add-to-cart'] ) || ! is_numeric( $_REQUEST['add-to-cart'] ) ) {
 			return $url;
 		}
-		
+
 		$product_id = (int) apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_REQUEST['add-to-cart'] ) );
 		 
 		$product = wc_get_product($product_id); 
 
-		
-		if(  $product->is_type( 'simple' ) || $product->is_type( 'grouped' )
-		){
-			if(  !empty(get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ) && (get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ) != "default"))
+		$show_global = get_option( 'wc_settings_add_to_cart_redirect_acrw_checkbox', true );
+			$global_url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+		if(($show_global  == "yes") && ( $global_url  !="default") ){
+			$url_id =  url_to_postid(get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
+            $cur_lang =  apply_filters( 'wpml_current_language', NULL ); 
+            $def_lang = apply_filters( 'wpml_default_language', NULL );
+            $post_typ = get_post_type($url_id);
+            //echo apply_filters( 'wpml_object_id', $url_id, $post_typ, FALSE, $def_lang );
+            $cur_lang_url= apply_filters( 'wpml_object_id', $url_id, $post_typ, FALSE, $cur_lang );
+            
+            if(apply_filters( 'wpml_element_has_translations', NULL, $url_id, $post_typ ) ==true){
+                $url =  get_permalink($cur_lang_url);
+            }
+            else{
+                $url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+            }
+			
+		} 
+		else if(  $product->is_type( 'simple' ) || $product->is_type( 'grouped' ) ){
+			
+		 if(  !empty(get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ) && (get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ) != "default"))
 		){
 			$url = get_post_meta( $product_id, 'add_to_cart_simple_redirect', true );
 		}

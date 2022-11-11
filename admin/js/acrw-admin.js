@@ -29,7 +29,7 @@
    * practising this, we should strive to set a better example in our own work.
    */
   jQuery(document).ready(function ($) {
-    jQuery("#wc_settings_add_to_cart_redirect_acrw_title").select2({
+    jQuery("#wc_settings_add_to_cart_redirect_acrw_url").select2({
       placeholder: "",
       templateResult: formatState,
       theme: "belo-acrw",

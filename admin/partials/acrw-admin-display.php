@@ -56,7 +56,7 @@ wp_enqueue_style(
     'acrw-admin-global',
     plugin_dir_url( __FILE__ ) . '../css/acrw-admin.css',
     array(),
-    '1.21111111111111111111'
+    '1.2111111111111111111111111'
 ); 
 wp_enqueue_script(
     'acrw--select2-js',
@@ -70,7 +70,7 @@ wp_enqueue_script(
     'acrw-admin',
     plugin_dir_url( __FILE__ ) . '../js/acrw-admin.js',
     array( 'jquery' ),
-    "1.2111111111",
+    "1.21111111111",
     false
 ); 
     }
@@ -81,7 +81,7 @@ public static function update_settings() {
 
 
 public static function get_settings() {
-
+            
             $options = array();
 			$options['default'] = __( 'Select a value', "acrw");  
 
@@ -162,6 +162,10 @@ input[type="checkbox"]:checked:before {
     height: 1.4125rem;
     width: 1.4125rem;
 }
+
+#wc_settings_add_to_cart_redirect_acrw_checkbox {
+    margin-right: 10px !important;
+}
 </style>
 
 <h2 class="acrw_global_title">
@@ -180,7 +184,7 @@ input[type="checkbox"]:checked:before {
             'name' => __( 'Add to cart redirect - global', 'belo-acrw' ),
             'type' => 'select',
             'desc' => __( 'select the global redirect', 'belo-acrw' ),
-            'id'   => 'wc_settings_add_to_cart_redirect_acrw_title',
+            'id'   => 'wc_settings_add_to_cart_redirect_acrw_url',
             'options'=> $options,
         ), 
         'checkbox_acrw_global' => array(

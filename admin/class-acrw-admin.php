@@ -79,7 +79,7 @@ class Acrw_Admin {
                 $this->plugin_name . 'admin',
                 plugin_dir_url( __FILE__ ) . 'css/acrw-admin.css',
                 array(),
-                '1.21111'
+                '1.2111111111111111'
             ); 
 
         }

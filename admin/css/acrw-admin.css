@@ -2,6 +2,14 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+.acrw-wrapper {
+  padding: 20px 5px;
+  background: #4e8ba21f;
+  margin: 5px 0px;
+}
+.acrw-wrapper label {
+  color: black !important;
+}
 label[for="add_to_cart_variation_parent_redirect"] {
   margin-right: 10px !important;
   line-height: 1.1 !important;
@@ -25,26 +33,19 @@ label[for="add_to_cart_variation_parent_redirect"] {
   border-color: none !important;
   box-shadow: none !important;
 }
-.acrw-wrapper
-  .select2-container
-  .select2-selection--single
-  .select2-selection__arrow
-  b {
-  display: block !important;
-}
-.acrw-wrapper
-  .select2-container
-  .select2-selection--single
-  .select2-selection__arrow {
-  background: unset !important;
-}
+
 .select2-container--belo-acrw
   .select2-selection--single
   .select2-selection__rendered {
-  font-size: 15px !important;
-  color: #555 !important;
+  font-size: 14px !important;
+  line-height: 2 !important;
+  color: #2c3338 !important;
 }
-
+.select2-container--belo-acrw
+  .select2-selection--single
+  .select2-selection__rendered:hover {
+  color: #007cba !important;
+}
 .select2-container--belo-acrw
   .select2-selection--single
   .select2-selection__arrow {
@@ -79,6 +80,7 @@ label[for="add_to_cart_variation_parent_redirect"] {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+  background-color: white !important;
 }
 .select2-container--belo-acrw .select2-search__field:focus {
   border-color: #a7d9ec !important;
@@ -90,6 +92,15 @@ label[for="add_to_cart_variation_parent_redirect"] {
 .select2-container--belo-acrw .select2-selection--single:active {
   border-color: #a7d9ec !important;
 }
+.select2-container--belo-acrw
+  .select2-selection--single:hover
+  .select2-selection__rendered,
+.select2-container--belo-acrw
+  .select2-selection--single:active
+  .select2-selection__rendered {
+  color: #007cba !important;
+}
+
 .select2-container--belo-acrw:focus {
   border-color: #a7d9ec !important;
 }
