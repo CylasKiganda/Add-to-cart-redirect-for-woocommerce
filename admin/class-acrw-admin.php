@@ -148,10 +148,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_simple_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
 			'name'          => 'add_to_cart_simple_redirect',
-			'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
+			'label'         => __('Add to cart redirect', 'ahbelo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'ahbelo-add-to-cart-redirect' ),
 			) );
 			
 			echo '</div>'; 
@@ -177,10 +177,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_grouped_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
 			'name'          => 'add_to_cart_simple_redirect',
-			'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
+			'label'         => __('Add to cart redirect', 'ahbelo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'ahbelo-add-to-cart-redirect' ),
 			) );
 			
 			echo '</div>';
@@ -207,10 +207,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_variation_parent_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_variation_parent_redirect', true ),
 			'name'          => 'add_to_cart_variation_parent_redirect',
-			'label'         => __('Add to cart redirect - parent', 'belo-add-to-cart-redirect'), 
+			'label'         => __('Add to cart redirect - parent', 'ahbelo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'ahbelo-add-to-cart-redirect' ),
 			) );
 			
 			echo '</div>';
@@ -249,7 +249,7 @@ class Acrw_Admin {
 		 */
 		 
             $options = WC_get_options_acrw::get_options_data();
-			$text_val= __( 'Same as parent', 'belo-add-to-cart-redirect');
+			$text_val= __( 'Same as parent', 'ahbelo-add-to-cart-redirect');
 			$fist_option = array('same_as_parent'=> $text_val);
 			unset($options['default']);
 
@@ -260,10 +260,10 @@ class Acrw_Admin {
 				'name' => 'add_to_cart_variation_redirect['.$loop.']', 
 				'class' => 'long belo_variation_select',
 				'value'         => get_post_meta( $variation->ID, 'add_to_cart_variation_redirect', true ), 
-				'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
+				'label'         => __('Add to cart redirect', 'ahbelo-add-to-cart-redirect'), 
 				'options' =>  $options,  
 				'desc_tip'      => true,
-				'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
+				'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'ahbelo-add-to-cart-redirect' ),
 				) );
 				echo '</div>';
 	}
