@@ -83,8 +83,15 @@ public static function update_settings() {
 public static function get_settings() {
             
             $options = array();
-			$options['default'] = __( 'Select a value', "acrw");  
+			$options['default'] = __( 'Select a value', "acrw");
+             
+            $query = new WP_Query( array( 'order' => 'DESC',
+            'post_type' => 'any',
+            'post_status' => 'publish',
+            'numberposts' => 1000000, ) );
 
+           //var_dump( $query);
+           
             $post_string = __( 'post', 'acrw');
             $page_string = __( 'page', 'acrw');
 
