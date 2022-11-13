@@ -16,7 +16,7 @@
  * Plugin URI:        https://#
  * Description:       Sends customers to custom pages/location such as the checkout page for faster conversions and other purposes such as terms-of-use pages.
  * Version:           1.0.0
- * Author:            Belo 
+ * Author:            Ahbelo 
  * Author URI:        https://#
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
