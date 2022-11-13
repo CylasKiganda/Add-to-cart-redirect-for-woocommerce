@@ -114,7 +114,7 @@ class Acrw_Admin {
                 $this->plugin_name . 'admin',
                 plugin_dir_url( __FILE__ ) . 'js/acrw-admin.js',
                 array( 'jquery' ),
-                "1.11111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+                "1.211",
                 false
             );
 
@@ -166,7 +166,7 @@ class Acrw_Admin {
 
 		global $post;
 		$product = wc_get_product($post->ID); 
-		if($product->is_type('grouped')){
+		
 			$options = WC_get_options_acrw::get_options_data();
 				  
 
@@ -184,7 +184,7 @@ class Acrw_Admin {
 			) );
 			
 			echo '</div>';
-		}
+		
 			
 		
 	}

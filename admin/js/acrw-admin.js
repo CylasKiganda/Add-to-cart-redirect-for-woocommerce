@@ -53,6 +53,16 @@
       templateResult: formatState,
       theme: "belo-acrw",
     });
+    $("#add_to_cart_variation_parent_redirect").select2({
+      placeholder: "",
+      templateResult: formatState,
+      theme: "belo-acrw",
+    });
+    $("#add_to_cart_grouped_redirect").select2({
+      placeholder: "",
+      templateResult: formatState,
+      theme: "belo-acrw",
+    });
     $(document).ready(function () {
       if (
         $("#add_to_cart_variation_parent_redirect").length &&
@@ -70,44 +80,13 @@
       }
 
       if (rendered_iput.text().indexOf(",") !== -1) {
-        rendered_iput.text(
-          rendered_iput
-            .text()
-            .replace(
-              $(
-                ".select2-container--belo-acrw .select2-selection__rendered span"
-              ).text(),
-              ""
-            )
-            .split(",")[0]
-        );
+        rendered_iput.text(rendered_iput.text().split(",")[0]);
       }
       rendered_iput.on("DOMSubtreeModified", function () {
-        if (rendered_iput.text().indexOf(",") !== -1) {
-          rendered_iput.text(
-            rendered_iput
-              .text()
-              .replace(
-                $(
-                  ".select2-container--belo-acrw .select2-selection__rendered span"
-                ).text(),
-                ""
-              )
-              .split(",")[0]
-          );
+        if ($(this).text().indexOf(",") !== -1) {
+          $(this).text($(this).text().split(",")[0]);
         }
       });
-    });
-
-    $("#add_to_cart_variation_parent_redirect").select2({
-      placeholder: "",
-      templateResult: formatState,
-      theme: "belo-acrw",
-    });
-    $("#add_to_cart_grouped_redirect").select2({
-      placeholder: "",
-      templateResult: formatState,
-      theme: "belo-acrw",
     });
 
     $("#woocommerce-product-data").on("woocommerce_variations_loaded", () => {

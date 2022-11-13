@@ -70,7 +70,7 @@ wp_enqueue_script(
     'acrw-admin',
     plugin_dir_url( __FILE__ ) . '../js/acrw-admin.js',
     array( 'jquery' ),
-    "1.21111111111",
+    "1.2111111111111",
     false
 ); 
     }
