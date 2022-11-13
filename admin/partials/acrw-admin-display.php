@@ -25,7 +25,7 @@ add_action( 'woocommerce_update_options_settings_add_to_cart_redirect_acrw', __C
 
 
 public static function add_settings_tab( $settings_tabs ) {
-$settings_tabs['settings_add_to_cart_redirect_acrw'] = __( 'Add To Cart Redirect', 'belo-acrw' );
+$settings_tabs['settings_add_to_cart_redirect_acrw'] = __( 'Add To Cart Redirect', 'belo-add-to-cart-redirect' );
 return $settings_tabs;
 }
 
@@ -82,30 +82,10 @@ public static function update_settings() {
 
 public static function get_settings() {
             
-            $options = array();
-			$options['default'] = __( 'Select a value', "acrw");
-             
-            $query = new WP_Query( array( 'order' => 'DESC',
-            'post_type' => 'any',
-            'post_status' => 'publish',
-            'numberposts' => 1000000, ) );
+            $options = WC_get_options_acrw::get_options_data();
 
-           //var_dump( $query);
-           
-            $post_string = __( 'post', 'acrw');
-            $page_string = __( 'page', 'acrw');
+			 
 
-            $main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-			}
-            
-			$main_data_posts = get_posts();
-			foreach ($main_data_posts as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
-
-			
 ?>
 <style>
 #wpbody-content .notice,
@@ -176,7 +156,7 @@ input[type="checkbox"]:checked:before {
 </style>
 
 <h2 class="acrw_global_title">
-    <?php  echo __( 'Global Settings', 'belo-acrw' ); ?>
+    <?php  echo __( 'Global Settings', 'belo-add-to-cart-redirect' ); ?>
 
 </h2>
 <?php 
@@ -188,16 +168,16 @@ input[type="checkbox"]:checked:before {
             'id'       => 'wc_settings_add_to_cart_redirect_acrw_section_title'
         ),
         'select_acrw_global' => array(
-            'name' => __( 'Add to cart redirect - global', 'belo-acrw' ),
+            'name' => __( 'Add to cart redirect - global', 'belo-add-to-cart-redirect' ),
             'type' => 'select',
-            'desc' => __( 'select the global redirect', 'belo-acrw' ),
+            'desc' => __( 'select the global redirect', 'belo-add-to-cart-redirect' ),
             'id'   => 'wc_settings_add_to_cart_redirect_acrw_url',
             'options'=> $options,
         ), 
         'checkbox_acrw_global' => array(
-            'name' => __( 'Enable the global redirect', 'belo-acrw' ),
+            'name' => __( 'Enable the global redirect', 'belo-add-to-cart-redirect' ),
             'type' => 'checkbox',
-            'desc' => __( 'Enable the global redirect for all products', 'belo-acrw' ),
+            'desc' => __( 'Enable the global redirect for all products', 'belo-add-to-cart-redirect' ),
             'id'   => 'wc_settings_add_to_cart_redirect_acrw_checkbox',
             'default'=> 'false',
         ), 

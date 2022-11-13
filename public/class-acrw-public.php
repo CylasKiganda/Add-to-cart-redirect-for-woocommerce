@@ -72,16 +72,22 @@ class Acrw_Public {
 		$show_global = get_option( 'wc_settings_add_to_cart_redirect_acrw_checkbox', true );
 			$global_url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
 		if(($show_global  == "yes") && ( $global_url  !="default") ){
+
 			$url_id =  url_to_postid(get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
+			$post_typ = get_post_type($url_id);
+			//add wpml support
+			if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
             $cur_lang =  apply_filters( 'wpml_current_language', NULL ); 
             $def_lang = apply_filters( 'wpml_default_language', NULL );
-            $post_typ = get_post_type($url_id);
-            //echo apply_filters( 'wpml_object_id', $url_id, $post_typ, FALSE, $def_lang );
             $cur_lang_url= apply_filters( 'wpml_object_id', $url_id, $post_typ, FALSE, $cur_lang );
             
             if(apply_filters( 'wpml_element_has_translations', NULL, $url_id, $post_typ ) ==true){
                 $url =  get_permalink($cur_lang_url);
             }
+			else{
+				$url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+			}
+		    }
             else{
                 $url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
             }

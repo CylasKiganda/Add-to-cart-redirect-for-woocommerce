@@ -51,7 +51,9 @@ class Acrw_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/acrw-admin-display.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/acrw-admin-get-options.php';
+ 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/acrw-admin-display.php';
+		
 
 
 	} 
@@ -138,23 +140,7 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		 
-		$options = array();
-		$options['default'] = __( 'Select a value', "belo-acrw");  
-
-		$post_string = __( 'post', "belo-acrw");
-		$page_string = __( 'page', "belo-acrw");
-		
-		$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-			}
-            
-			$main_data_posts = get_posts();
-			foreach ($main_data_posts as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
-				  
-
+		$options = WC_get_options_acrw::get_options_data();
 			 
 			echo '<div class="show_if_simple acrw-wrapper ">';
 			
@@ -162,10 +148,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_simple_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
 			'name'          => 'add_to_cart_simple_redirect',
-			'label'         => __('Add to cart redirect', "belo-acrw"), 
+			'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
 			) );
 			
 			echo '</div>'; 
@@ -181,22 +167,7 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		if($product->is_type('grouped')){
-			$options = array();
-			$options['default'] = __( 'Select a value', "belo-acrw");  
-
-            $post_string = __( 'post', "belo-acrw");
-            $page_string = __( 'page', "belo-acrw");
-            
-			$main_data_posts = get_posts();
-			$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-			}
-            
-			$main_data_posts = get_posts();
-			foreach ($main_data_posts as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
+			$options = WC_get_options_acrw::get_options_data();
 				  
 
 			 
@@ -206,10 +177,10 @@ class Acrw_Admin {
 			'id'            => 'add_to_cart_grouped_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
 			'name'          => 'add_to_cart_simple_redirect',
-			'label'         => __('Add to cart redirect', "belo-acrw"), 
+			'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
 			) );
 			
 			echo '</div>';
@@ -226,35 +197,20 @@ class Acrw_Admin {
 
 		global $post;
 		$product = wc_get_product($post->ID); 
-		 //var_dump( get_pages());
-		 $options = array();
-		 $options['default'] = __( 'Select a value', "belo-acrw");  
-
-		 $post_string = __( 'post', "belo-acrw");
-		 $page_string = __( 'page', "belo-acrw");
-		 
-		 $main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-			}
-            
-			$main_data_posts = get_posts();
-			foreach ($main_data_posts as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
-				  
-
-			 
+		
+		
+		 $options = WC_get_options_acrw::get_options_data();
+				   
 			echo '<div class="show_if_variable acrw-wrapper">';
 			
 			woocommerce_wp_select( array(
 			'id'            => 'add_to_cart_variation_parent_redirect',
 			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_variation_parent_redirect', true ),
 			'name'          => 'add_to_cart_variation_parent_redirect',
-			'label'         => __('Add to cart redirect - parent', "belo-acrw"), 
+			'label'         => __('Add to cart redirect - parent', 'belo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
-			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
+			'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
 			) );
 			
 			echo '</div>';
@@ -291,31 +247,23 @@ class Acrw_Admin {
 		 * This function is used to add the add-to-cart url field for variation products.
 		 * 
 		 */
-		$options = array();
-			$options['same_as_parent'] = __( 'Same as parent', "belo-acrw");  
+		 
+            $options = WC_get_options_acrw::get_options_data();
+			$text_val= __( 'Same as parent', 'belo-add-to-cart-redirect');
+			$fist_option = array('same_as_parent'=> $text_val);
+			unset($options['default']);
 
-            $post_string = __( 'post', "belo-acrw");
-            $page_string = __( 'page', "belo-acrw");
-            
-			$main_data_pages = get_pages();
-			foreach ($main_data_pages as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$page_string;
-			}
-            
-			$main_data_posts = get_posts();
-			foreach ($main_data_posts as  $item){
-				$options[get_permalink($item->ID)] = $item->post_title.','.$post_string;
-			}
+			$options = $fist_option + $options;
 			echo '<div class=" acrw-wrapper">';
 			woocommerce_wp_select( array(
 				'id' => 'add_to_cart_variation_redirect'.$loop, 
 				'name' => 'add_to_cart_variation_redirect['.$loop.']', 
 				'class' => 'long belo_variation_select',
 				'value'         => get_post_meta( $variation->ID, 'add_to_cart_variation_redirect', true ), 
-				'label'         => __('Add to cart redirect', "belo-acrw"), 
+				'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
 				'options' =>  $options,  
 				'desc_tip'      => true,
-				'description'   => __( 'After this product is added to the cart, select the page to be redirected to', "belo-acrw" ),
+				'description'   => __( 'After this product is added to the cart, select the page to be redirected to', 'belo-add-to-cart-redirect' ),
 				) );
 				echo '</div>';
 	}
