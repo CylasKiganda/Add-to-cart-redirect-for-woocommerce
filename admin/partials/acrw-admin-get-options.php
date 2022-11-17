@@ -20,7 +20,7 @@ public static function get_options_data() {
             
             $options = array();
 
-			$options['default'] = __( 'Select a value', 'ahbelo-add-to-cart-redirect');
+			$options['default'] = __( 'Select a value', 'belo-add-to-cart-redirect');
 
             global $wpdb;
 
@@ -44,16 +44,16 @@ public static function get_options_data() {
                     $post_language_code = apply_filters( 'wpml_element_language_code', null, $args );
                     if($post_language_code == $cur_lang){
                         if($values->post_type == "product"){
-                            $ptype = __( "product",'ahbelo-add-to-cart-redirect');
+                            $ptype = __( "product",'belo-add-to-cart-redirect');
                         }
                         else if($values->post_type == "post"){
-                            $ptype = __( "post",'ahbelo-add-to-cart-redirect');
+                            $ptype = __( "post",'belo-add-to-cart-redirect');
                         }
                         else if($values->post_type == "page"){
-                            $ptype = __( "page",'ahbelo-add-to-cart-redirect');
+                            $ptype = __( "page",'belo-add-to-cart-redirect');
                         }
                         else {
-                            $ptype = __( $values->post_type,'ahbelo-add-to-cart-redirect');
+                            $ptype = __( $values->post_type,'belo-add-to-cart-redirect');
                         }
                         if(!empty($values->ID)){
                             $options[get_permalink($values->ID)] = $values->post_title.','.$ptype; 
@@ -66,16 +66,16 @@ public static function get_options_data() {
                 foreach ( $posts as $values ) {
                     $args = array('element_id' => $values->ID, 'element_type' => $values->post_type); 
                         if($values->post_type == "product"){
-                            $ptype = __( "product",'ahbelo-add-to-cart-redirect');
+                            $ptype = __( "product",'belo-add-to-cart-redirect');
                         }
                         else if($values->post_type == "post"){
-                            $ptype = __( "post",'ahbelo-add-to-cart-redirect');
+                            $ptype = __( "post",'belo-add-to-cart-redirect');
                         }
                         else if($values->post_type == "page"){
-                            $ptype = __( "page",'ahbelo-add-to-cart-redirect');
+                            $ptype = __( "page",'belo-add-to-cart-redirect');
                         }
                         else {
-                            $ptype = __( $values->post_type,'ahbelo-add-to-cart-redirect');
+                            $ptype = __( $values->post_type,'belo-add-to-cart-redirect');
                         }
                         if(!empty($values->ID)){
                             $options[get_permalink($values->ID)] = $values->post_title.','.$ptype; 

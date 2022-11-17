@@ -25,7 +25,7 @@ add_action( 'woocommerce_update_options_settings_add_to_cart_redirect_acrw', __C
 
 
 public static function add_settings_tab( $settings_tabs ) {
-$settings_tabs['settings_add_to_cart_redirect_acrw'] = __( 'Add To Cart Redirect', 'ahbelo-add-to-cart-redirect' );
+$settings_tabs['settings_add_to_cart_redirect_acrw'] = __( 'Add To Cart Redirect', 'belo-add-to-cart-redirect' );
 return $settings_tabs;
 }
 
@@ -173,7 +173,7 @@ jQuery(document).ready(function() {
 });
 </script>
 <h2 class="acrw_global_title">
-    <?php  echo __( 'Global Settings', 'ahbelo-add-to-cart-redirect' ); ?>
+    <?php  echo __( 'Global Settings', 'belo-add-to-cart-redirect' ); ?>
 
 </h2>
 <?php 
@@ -185,16 +185,16 @@ jQuery(document).ready(function() {
             'id'       => 'wc_settings_add_to_cart_redirect_acrw_section_title'
         ),
         'select_acrw_global' => array(
-            'name' => __( 'Add to cart redirect - global', 'ahbelo-add-to-cart-redirect' ),
+            'name' => __( 'Add to cart redirect - global', 'belo-add-to-cart-redirect' ),
             'type' => 'select',
-            'desc' => __( 'select the global redirect', 'ahbelo-add-to-cart-redirect' ),
+            'desc' => __( 'select the global redirect', 'belo-add-to-cart-redirect' ),
             'id'   => 'wc_settings_add_to_cart_redirect_acrw_url',
             'options'=> $options,
         ), 
         'checkbox_acrw_global' => array(
-            'name' => __( 'Enable the global redirect', 'ahbelo-add-to-cart-redirect' ),
+            'name' => __( 'Enable the global redirect', 'belo-add-to-cart-redirect' ),
             'type' => 'checkbox',
-            'desc' => __( 'Enable the global redirect for all products', 'ahbelo-add-to-cart-redirect' ),
+            'desc' => __( 'Enable the global redirect for all products', 'belo-add-to-cart-redirect' ),
             'id'   => 'wc_settings_add_to_cart_redirect_acrw_checkbox',
             'default'=> 'false',
         ), 

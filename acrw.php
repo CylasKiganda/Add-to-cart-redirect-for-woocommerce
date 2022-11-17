@@ -20,7 +20,7 @@
  * Author URI:        https://profiles.wordpress.org/cylas/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       ahbelo-add-to-cart-redirect
+ * Text Domain:       belo-add-to-cart-redirect
  * Domain Path:       /languages
  */
 
