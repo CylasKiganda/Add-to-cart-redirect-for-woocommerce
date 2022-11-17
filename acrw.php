@@ -16,8 +16,8 @@
  * Plugin URI:        https://#
  * Description:       Sends customers to custom pages/location such as the checkout page for faster conversions and other purposes such as terms-of-use pages.
  * Version:           1.0.0
- * Author:            Ahbelo 
- * Author URI:        https://#
+ * Author:            Belo 
+ * Author URI:        https://profiles.wordpress.org/cylas/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ahbelo-add-to-cart-redirect
