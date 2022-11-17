@@ -104,6 +104,10 @@ public static function get_settings() {
     margin: 0px;
 }
 
+#wpbody {
+    margin-top: 0px !important;
+}
+
 table.form-table {
     border: 1px solid #d8d8d8;
     border-top: 0;
@@ -114,6 +118,14 @@ table.form-table td,
 th {
     padding: 30px 20px !important;
     background-color: #fff;
+}
+
+body>.acrw_global_title {
+    display: none !important;
+}
+
+form.acrw_global_title {
+    display: block !important;
 }
 
 p.submit {
@@ -154,7 +166,12 @@ input[type="checkbox"]:checked:before {
     margin-right: 10px !important;
 }
 </style>
+<script>
+jQuery(document).ready(function() {
+    jQuery('#wpbody').css('margin-top', '0px');
 
+});
+</script>
 <h2 class="acrw_global_title">
     <?php  echo __( 'Global Settings', 'ahbelo-add-to-cart-redirect' ); ?>
 
