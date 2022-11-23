@@ -1,114 +1,88 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://#
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+=== BELO Add to Cart Redirect for Woocommerce ===
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Contributors:      cylas
+Requires at least: 5.2 or higher
+Tested up to:      6.1
+Requires PHP:      5.6
+Stable tag:        1.0.0
+Donate link: belocodes@gmail.com
+License:           GPLv2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Tags:              add to cart redirect, cart, checkout redirect, variation product cart redirect, single product cart redirect, global product cart redirect
+
+Redirects customers to custom pages/location such as the checkout page for faster conversions and other purposes such as terms-of-use pages.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+The BELO Add to Cart Redirect for Woocommerce plugin is a special tool used to redirect customers to desired locations on the site such as the checkout page after a product is added to the cart to boost conversion and sales. Other common use cases include redirecting customers to the terms and conditions or end-user license agreement pages.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Currently the plugin includes the following add to cart redirect modules:
 
-A few notes about the sections above:
-
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* **Global redirect:** This sets a redirect for all products on the site.
+* **Simple product redirect:** This sets a redirect location for only simple products.
+* **Parent variation product redirect:** This sets a redirect location for all variation child products on the site.
+* **Parent variation redirect:** This sets a redirect location for individual varation products on the site.
+* **Grouped product redirect:** This sets a redirect location for only grouped products.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+= Installation from within WordPress =
 
-e.g.
+1. Visit **Plugins > Add New**.
+2. Search for **BELO Add to Cart Redirect for Woocommerce**.
+3. Install and activate the BELO Add to Cart Redirect for Woocommerce plugin.
 
-1. Upload `acrw.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+= Manual installation =
+
+1. Upload the entire `belo-add-to-cart-redirect-for-woocommerce` folder to the `/wp-content/plugins/` directory.
+2. Visit **Plugins**.
+3. Activate the BELO Add to Cart Redirect for Woocommerce plugin.
+
+= After activation =
+
+1. For the global add to cart redirect visit **Woocommerce > Settings > Add To Cart Redirect** tab and then select the add to cart redirect location and enable it.
+2. For the simple and parent variation products visit the **Product data > General > Add To Cart Redirect** section and then select the add to cart redirect location and update the product.
+3. For the grouped products visit the **Product data > Inventory > Add To Cart Redirect** section and then select the add to cart redirect location and update the product.
+4. For the variation child products visit each variation's edit section and locate the **Add To Cart Redirect** section and then select the add to cart redirect location and save changes and finally update the product.
+
+= Execution priority =
+* If the global redirect is set and enabled, it will override all other individual product redirects. Most common use cases include redirecting to the checkout page after add to cart for all products.
+* If the global redirect is disabled, the individual product redirect configurations will be used. For variation products, the parent redirect can be configured as well as the child redirects. If you want to redirect all child variations to the same location, you can simply just set the parent variation redirect. By default all child variations redirect to the parent variation redirect. However, redirect can be changed and configured to any desired location for each of the child variations.
+
+= Support for translation =
+* If you are using wpml for translation, support is included in the BELO Add to Cart Redirect for Woocommerce for the global setting. This implies that you only have to set the redirect in the admin default editing language. The translation of this redirect is automatically picked up and used for the different languages on your site. The redirect in the product edit pages needs to be set for each language.
+ 
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= What is the purpose of this plugin? =
 
-An answer to that question.
+The primary purpose of the BELO Add to Cart Redirect for Woocommerce plugin is to add the add to cart redirect support to a woocommerce site. This is achived at either the global level for all products or the individual product level. This plugin enables you to boost your conversion and sales by eliminating the longer default processes and giving you full control to the redirection that ocurs after a product is added to the cart.
 
-= What about foo bar? =
+ 
+= Where can I submit my plugin feedback? =
 
-Answer to foo bar dilemma.
+Especially since this is a collection of WordPress core feature plugins, providing feedback is encouraged and much appreciated! You can submit your feedback either in the [plugin support forum](https://wordpress.org/support/plugin/belo-add-to-cart-redirect-for-woocommerce/) or, if you have a specific issue to report, in its [GitHub repository](https://github.com/WordPress/belo-add-to-cart-redirect-for-woocommerce).
+
+= How can I contribute to the plugin? =
+
+Contributions welcome! There are several ways to contribute:
+
+* Raise an issue or submit a pull request in the [Github repository for the plugin](https://github.com/WordPress/belo-add-to-cart-redirect-for-woocommerce)
+* Translate the plugin into your language at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/belo-add-to-cart-redirect-for-woocommerce)
+* Join the weekly chat (Tuesdays at 16:00 UTC) in the [#performance channel on Slack](https://wordpress.slack.com/archives/belo-add-to-cart-redirect-for-woocommerce)
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
-
+1. Global add to cart redirect screen.
+2. The dropdown select interface is depicted in this screenshot. It can be observed that the search functionality is included.
+3. The add to cart redirect section for the simple products.
+4. The add to cart redirect for the parent variation product. 
+5. The child variation product's add to cart section. The default value is set to "Same as parent" which can be set as shown in the previous screenshot.
+6. The add to cart redirect section for grouped products. The add to cart redirect fields are located under the inventory section of the product data.
 == Changelog ==
+ 
+= 1.0.0 =
+Initial release
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`

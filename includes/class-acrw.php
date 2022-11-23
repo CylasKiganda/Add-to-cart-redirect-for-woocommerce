@@ -157,8 +157,8 @@ class Acrw {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Acrw_Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'bacrw_enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'bacrw_enqueue_scripts' );
 		$this->loader->add_action( 'woocommerce_product_options_general_product_data', $plugin_admin, 'bacrw_add_to_cart_simple_redirect_fields',10,3 );
 		$this->loader->add_action( 'woocommerce_product_options_inventory_product_data', $plugin_admin, 'bacrw_add_to_cart_grouped_redirect_fields',10,3 ); 
 		$this->loader->add_action( 'woocommerce_product_options_general_product_data', $plugin_admin, 'bacrw_add_to_cart_variation_parent_redirect_fields',10,3 ); 
@@ -183,7 +183,7 @@ class Acrw {
 
 		$plugin_public = new Acrw_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'woocommerce_add_to_cart_redirect', $plugin_public, 'add_to_cart_redirect_url',10,2 ); 
+		$this->loader->add_action( 'woocommerce_add_to_cart_redirect', $plugin_public, 'bacrw_add_to_cart_redirect_url',10,2 ); 
 
 	}
 
@@ -192,7 +192,7 @@ class Acrw {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function bacrw_run() {
 		$this->loader->run();
 	}
 

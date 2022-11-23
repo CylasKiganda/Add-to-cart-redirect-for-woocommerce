@@ -14,7 +14,7 @@
  * 
  * Plugin Name:       BELO Add to Cart Redirect for Woocommerce
  * Plugin URI:        https://github.com/CylasKiganda/add-to-cart-redirect-for-woocommerce
- * Description:       Sends customers to custom pages/location such as the checkout page for faster conversions and other purposes such as terms-of-use pages.
+ * Description:       After add to cart it redirects customers to custom pages/location such as the checkout page for faster conversions and sales.
  * Version:           1.0.0
  * Author:            Belo 
  * Author URI:        https://profiles.wordpress.org/cylas/

@@ -70,7 +70,7 @@ class Acrw_Public {
 		$product = wc_get_product($product_id); 
 
 		$show_global = get_option( 'wc_settings_add_to_cart_redirect_acrw_checkbox', true );
-			$global_url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+		$global_url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
 		if(($show_global  == "yes") && ( $global_url  !="default") ){
 
 			$url_id =  url_to_postid(get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
@@ -85,11 +85,11 @@ class Acrw_Public {
                 $url =  get_permalink($cur_lang_url);
             }
 			else{
-				$url = esc_url( get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
+				$url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
 			}
 		    }
             else{
-                $url = esc_url( get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
+                $url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
             }
 			
 		} 
