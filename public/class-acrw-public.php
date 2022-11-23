@@ -59,7 +59,7 @@ class Acrw_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function add_to_cart_redirect_url( $url ) {
+	public function bacrw_add_to_cart_redirect_url( $url ) {
 	
 		if ( ! isset( $_REQUEST['add-to-cart'] ) || ! is_numeric( $_REQUEST['add-to-cart'] ) ) {
 			return $url;
@@ -85,27 +85,35 @@ class Acrw_Public {
                 $url =  get_permalink($cur_lang_url);
             }
 			else{
-				$url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+				$url = esc_url( get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
 			}
 		    }
             else{
-                $url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+                $url = esc_url( get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
             }
 			
 		} 
-		else if(  $product->is_type( 'simple' ) || $product->is_type( 'grouped' ) ){
+		else if(  $product->is_type( 'simple' )  ){
 			
 		 if(  !empty(get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ) && (get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ) != "default"))
 		){
-			$url = get_post_meta( $product_id, 'add_to_cart_simple_redirect', true );
+			$url = esc_url( get_post_meta( $product_id, 'add_to_cart_simple_redirect', true ));
 		}
 			
 		}
+		else if(  $product->is_type( 'grouped' ) ){
+			
+			if(  !empty(get_post_meta( $product_id, 'add_to_cart_grouped_redirect', true ) && (get_post_meta( $product_id, 'add_to_cart_grouped_redirect', true ) != "default"))
+		   ){
+			   $url = esc_url( get_post_meta( $product_id, 'add_to_cart_grouped_redirect', true ));
+		   }
+			   
+		   }
 		else if($product->is_type( 'variable' )){
 			$variation = wc_get_product($_REQUEST['variation_id']);
 			if(  !empty(get_post_meta(  $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true )) && (get_post_meta( $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true ) !== "same_as_parent"))
 			{
-				$url = get_post_meta(  $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true );
+				$url = esc_url( get_post_meta(  $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true ));
 			}
 			else if(  !empty(get_post_meta(  $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true )) && (get_post_meta( $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true ) === "same_as_parent"))
 			{
@@ -113,14 +121,14 @@ class Acrw_Public {
 				
 				//$parent_id = $variation->get_parent_id();
                 if( !empty(get_post_meta(  $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true )) && get_post_meta(  $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true ) !== "default"){
-					$url = get_post_meta(  $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true );
+					$url = esc_url( get_post_meta(  $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true ));
 				}
 				 
 
 			}
 			else if(  empty(get_post_meta(  $_REQUEST['variation_id'], 'add_to_cart_variation_redirect', true )) && !empty(get_post_meta( $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true )))
 			{
-				$url = get_post_meta(  $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true ); 
+				$url = esc_url( get_post_meta(  $variation->get_parent_id(), 'add_to_cart_variation_parent_redirect', true )); 
 			}
 			   
 		   

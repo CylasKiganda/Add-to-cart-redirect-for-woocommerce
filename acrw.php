@@ -51,7 +51,7 @@ define( 'ACRW_NAME', $basename );
  
 
 
-function plugin_action_links( $links ) {
+function bacrw_plugin_action_links( $links ) {
 
 	$links = array_merge( array(
 		'<a href="' . esc_url( admin_url( '/admin.php?page=wc-settings&tab=settings_add_to_cart_redirect_acrw' ) ) . '">' . __( 'Settings', 'add-to-cart-redirect-for-woocommerce' ) . '</a>'
@@ -60,7 +60,7 @@ function plugin_action_links( $links ) {
 return $links;
 
 }
-add_action( 'plugin_action_links_'.ACRW_NAME , 'plugin_action_links' );
+add_action( 'plugin_action_links_'.ACRW_NAME , 'bacrw_plugin_action_links' );
 
 /**
  * Currently plugin version.
@@ -105,10 +105,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-acrw.php';
  *
  * @since    1.0.0
  */
-function run_acrw() {
+function bacrw_run_acrw() {
 
 	$plugin = new Acrw();
-	$plugin->run();
+	$plugin->bacrw_run();
 
 }
-run_acrw();
+bacrw_run_acrw();

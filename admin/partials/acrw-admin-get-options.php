@@ -16,7 +16,7 @@
 class WC_get_options_acrw {
  
  
-public static function get_options_data() {
+public static function bacrw_get_options_data() {
             
             $options = array();
 

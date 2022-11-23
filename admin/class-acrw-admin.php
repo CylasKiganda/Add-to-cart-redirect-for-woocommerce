@@ -63,7 +63,7 @@ class Acrw_Admin {
      *
      * @since    1.0.0
      */
-    public function enqueue_styles( $hook )
+    public function bacrw_enqueue_styles( $hook )
     {
         if( in_array($hook, array('post.php', 'post-new.php') ) ){
         $screen = get_current_screen();
@@ -96,7 +96,7 @@ class Acrw_Admin {
      *
      * @since    1.0.0
      */
-    public function enqueue_scripts( $hook )
+    public function bacrw_enqueue_scripts( $hook )
     { 
 		if( in_array($hook, array('post.php', 'post-new.php') ) ){
         $screen = get_current_screen();
@@ -130,7 +130,7 @@ class Acrw_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function add_to_cart_simple_redirect_fields() {
+	public function bacrw_add_to_cart_simple_redirect_fields() {
 
 		/**
 		 * This function is used to add the add-to-cart url field for simple products.
@@ -140,7 +140,7 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		 
-		$options = WC_get_options_acrw::get_options_data();
+		$options = WC_get_options_acrw::bacrw_get_options_data();
 			 
 			echo '<div class="show_if_simple acrw-wrapper ">';
 			
@@ -157,7 +157,7 @@ class Acrw_Admin {
 			echo '</div>'; 
   	
 	}
-	public function add_to_cart_grouped_redirect_fields() {
+	public function bacrw_add_to_cart_grouped_redirect_fields() {
 
 		/**
 		 * This function is used to add the add-to-cart url field for simple products.
@@ -167,7 +167,7 @@ class Acrw_Admin {
 		global $post;
 		$product = wc_get_product($post->ID); 
 		
-			$options = WC_get_options_acrw::get_options_data();
+			$options = WC_get_options_acrw::bacrw_get_options_data();
 				  
 
 			 
@@ -175,8 +175,8 @@ class Acrw_Admin {
 			
 			woocommerce_wp_select( array(
 			'id'            => 'add_to_cart_grouped_redirect',
-			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_simple_redirect', true ),
-			'name'          => 'add_to_cart_simple_redirect',
+			'value'         => get_post_meta( get_the_ID(), 'add_to_cart_grouped_redirect', true ),
+			'name'          => 'add_to_cart_grouped_redirect',
 			'label'         => __('Add to cart redirect', 'belo-add-to-cart-redirect'), 
 			'options' =>  $options,  
 			'desc_tip'      => true,
@@ -188,7 +188,7 @@ class Acrw_Admin {
 			
 		
 	}
-	public function add_to_cart_variation_parent_redirect_fields() {
+	public function bacrw_add_to_cart_variation_parent_redirect_fields() {
 
 		/**
 		 * This function is used to add the add-to-cart url field for simple products.
@@ -199,7 +199,7 @@ class Acrw_Admin {
 		$product = wc_get_product($post->ID); 
 		
 		
-		 $options = WC_get_options_acrw::get_options_data();
+		 $options = WC_get_options_acrw::bacrw_get_options_data();
 				   
 			echo '<div class="show_if_variable acrw-wrapper">';
 			
@@ -217,7 +217,7 @@ class Acrw_Admin {
 		 
 	}
 	
-	public function save_admin_add_to_cart_simple_redirect_values($product) {
+	public function bacrw_save_admin_add_to_cart_simple_redirect_values($product) {
 
 		/**
 		 * This function is used to save the add-to-cart url field value for simple products.
@@ -225,11 +225,21 @@ class Acrw_Admin {
 		 */
 
 		if ( isset($_POST['add_to_cart_simple_redirect']) ) {
-			$product->update_meta_data( 'add_to_cart_simple_redirect', $_POST['add_to_cart_simple_redirect'] );
+			$product->update_meta_data( 'add_to_cart_simple_redirect', sanitize_url($_POST['add_to_cart_simple_redirect'] ));
 		}
 	}
+	public function bacrw_save_admin_add_to_cart_grouped_redirect_values($product) {
 
-	public function save_admin_add_to_cart_variation_parent_redirect_values($product) {
+		/**
+		 * This function is used to save the add-to-cart url field value for simple products.
+		 * 
+		 */
+
+		if ( isset($_POST['add_to_cart_grouped_redirect']) ) {
+			$product->update_meta_data( 'add_to_cart_grouped_redirect', sanitize_url($_POST['add_to_cart_grouped_redirect'] ));
+		}
+	}
+	public function bacrw_save_admin_add_to_cart_variation_parent_redirect_values($product) {
 
 		/**
 		 * This function is used to save the add-to-cart url field value for variation_parent products.
@@ -237,18 +247,18 @@ class Acrw_Admin {
 		 */
 
 		if ( isset($_POST['add_to_cart_variation_parent_redirect']) ) {
-			$product->update_meta_data( 'add_to_cart_variation_parent_redirect',  $_POST['add_to_cart_variation_parent_redirect'] );
+			$product->update_meta_data( 'add_to_cart_variation_parent_redirect',  sanitize_url($_POST['add_to_cart_variation_parent_redirect'] ));
 		}
 	}
 
-	public function add_add_to_cart_variation_redirect_to_variations( $loop, $variation_data, $variation )  {
+	public function bacrw_add_add_to_cart_variation_redirect_to_variations( $loop, $variation_data, $variation )  {
 		
 		/**
 		 * This function is used to add the add-to-cart url field for variation products.
 		 * 
 		 */
 		 
-            $options = WC_get_options_acrw::get_options_data();
+            $options = WC_get_options_acrw::bacrw_get_options_data();
 			$text_val= __( 'Same as parent', 'belo-add-to-cart-redirect');
 			$fist_option = array('same_as_parent'=> $text_val);
 			unset($options['default']);
@@ -268,7 +278,7 @@ class Acrw_Admin {
 				echo '</div>';
 	}
 
-	public function save_add_to_cart_variation_redirect_variations($variation_id, $i) {
+	public function bacrw_save_add_to_cart_variation_redirect_variations($variation_id, $i) {
 
 		/**
 		 * This function is used to save the add-to-cart url field value for variation products.

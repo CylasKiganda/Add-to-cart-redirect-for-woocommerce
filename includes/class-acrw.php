@@ -159,14 +159,16 @@ class Acrw {
 		$plugin_admin = new Acrw_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'woocommerce_product_options_general_product_data', $plugin_admin, 'add_to_cart_simple_redirect_fields',10,3 );
-		$this->loader->add_action( 'woocommerce_product_options_inventory_product_data', $plugin_admin, 'add_to_cart_grouped_redirect_fields',10,3 ); 
-		$this->loader->add_action( 'woocommerce_product_options_general_product_data', $plugin_admin, 'add_to_cart_variation_parent_redirect_fields',10,3 ); 
-		$this->loader->add_action( 'woocommerce_admin_process_product_object', $plugin_admin, 'save_admin_add_to_cart_simple_redirect_values' ); 
-		$this->loader->add_action( 'woocommerce_admin_process_product_object', $plugin_admin, 'save_admin_add_to_cart_variation_parent_redirect_values' ); 
+		$this->loader->add_action( 'woocommerce_product_options_general_product_data', $plugin_admin, 'bacrw_add_to_cart_simple_redirect_fields',10,3 );
+		$this->loader->add_action( 'woocommerce_product_options_inventory_product_data', $plugin_admin, 'bacrw_add_to_cart_grouped_redirect_fields',10,3 ); 
+		$this->loader->add_action( 'woocommerce_product_options_general_product_data', $plugin_admin, 'bacrw_add_to_cart_variation_parent_redirect_fields',10,3 ); 
+		$this->loader->add_action( 'woocommerce_admin_process_product_object', $plugin_admin, 'bacrw_save_admin_add_to_cart_simple_redirect_values' ); 
+		$this->loader->add_action( 'woocommerce_admin_process_product_object', $plugin_admin, 'bacrw_save_admin_add_to_cart_grouped_redirect_values' ); 
 
-		$this->loader->add_action( 'woocommerce_product_after_variable_attributes', $plugin_admin, 'add_add_to_cart_variation_redirect_to_variations',10,3 ); 
-		$this->loader->add_action( 'woocommerce_save_product_variation', $plugin_admin, 'save_add_to_cart_variation_redirect_variations',10,2 ); 
+		$this->loader->add_action( 'woocommerce_admin_process_product_object', $plugin_admin, 'bacrw_save_admin_add_to_cart_variation_parent_redirect_values' ); 
+
+		$this->loader->add_action( 'woocommerce_product_after_variable_attributes', $plugin_admin, 'bacrw_add_add_to_cart_variation_redirect_to_variations',10,3 ); 
+		$this->loader->add_action( 'woocommerce_save_product_variation', $plugin_admin, 'bacrw_save_add_to_cart_variation_redirect_variations',10,2 ); 
  
 	}
 

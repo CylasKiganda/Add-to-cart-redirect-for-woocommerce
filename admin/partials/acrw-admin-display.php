@@ -82,7 +82,7 @@ public static function update_settings() {
 
 public static function get_settings() {
             
-            $options = WC_get_options_acrw::get_options_data();
+            $options = WC_get_options_acrw::bacrw_get_options_data();
 
 			 
 
@@ -104,9 +104,7 @@ public static function get_settings() {
     margin: 0px;
 }
 
-#wpbody {
-    margin-top: 0px !important;
-}
+
 
 table.form-table {
     border: 1px solid #d8d8d8;
@@ -166,12 +164,6 @@ input[type="checkbox"]:checked:before {
     margin-right: 10px !important;
 }
 </style>
-<script>
-jQuery(document).ready(function() {
-    jQuery('#wpbody').css('margin-top', '0px');
-
-});
-</script>
 <h2 class="acrw_global_title">
     <?php  echo __( 'Global Settings', 'belo-add-to-cart-redirect' ); ?>
 
