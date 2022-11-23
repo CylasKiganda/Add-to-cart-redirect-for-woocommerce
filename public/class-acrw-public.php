@@ -82,14 +82,14 @@ class Acrw_Public {
             $cur_lang_url= apply_filters( 'wpml_object_id', $url_id, $post_typ, FALSE, $cur_lang );
             
             if(apply_filters( 'wpml_element_has_translations', NULL, $url_id, $post_typ ) ==true){
-                $url =  get_permalink($cur_lang_url);
+                $url =  esc_url( get_permalink($cur_lang_url));
             }
 			else{
-				$url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+				$url = esc_url( get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
 			}
 		    }
             else{
-                $url = get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true );
+                $url =esc_url(  get_option( 'wc_settings_add_to_cart_redirect_acrw_url', true ));
             }
 			
 		} 
